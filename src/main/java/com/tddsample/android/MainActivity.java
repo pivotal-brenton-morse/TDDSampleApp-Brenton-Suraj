@@ -1,8 +1,10 @@
 package com.tddsample.android;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends Activity {
 
@@ -19,4 +21,7 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
+    public void buttonClick(View view) {
+        ((Button) view).setTextColor(R.color.red);
+    }
 }
