@@ -26,12 +26,12 @@ public class MainActivityTest {
     @Test
     public void buttonText_shouldBeBlack() {
         assertThat(mButton).hasText("Hello world!");
-        assertThat(mButton).hasCurrentTextColor(R.color.black);
+        assertThat(mButton).hasCurrentTextColor(mActivity.getResources().getColor(R.color.black));
     }
 
     @Test
     public void clickButton_shouldChangeColor() {
         mButton.performClick();
-        assertThat(mButton).hasCurrentTextColor(R.color.red);
+        assertThat(mButton).hasCurrentTextColor(mActivity.getResources().getColor(R.color.red));
     }
 }

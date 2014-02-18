@@ -22,6 +22,6 @@ public class MainActivity extends Activity {
 	}
 
     public void buttonClick(View view) {
-        ((Button) view).setTextColor(R.color.red);
+        ((Button) view).setTextColor(getResources().getColor(R.color.red));
     }
 }
