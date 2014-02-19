@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <!-- Main Activity -->
     <string name="app_name">TDDSampleApp</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="next_activity">Next activity!</string>
-
-    <!-- Next Activity -->
-    <string name="second_activity">Second activity!</string>
 
 </resources>

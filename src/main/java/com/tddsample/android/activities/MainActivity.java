@@ -1,11 +1,10 @@
-package com.tddsample.android;
+package com.tddsample.android.activities;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
-import android.widget.Button;
+
+import com.tddsample.android.R;
 
 public class MainActivity extends Activity {
 
@@ -21,13 +20,4 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-
-    public void buttonClick(View view) {
-        ((Button) view).setTextColor(getResources().getColor(R.color.red));
-    }
-
-    public void loadNextActivity(View view) {
-        Intent intent = new Intent(MainActivity.this, NextActivity.class);
-        MainActivity.this.startActivity(intent);
-    }
 }
