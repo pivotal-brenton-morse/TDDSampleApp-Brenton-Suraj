@@ -1,6 +1,7 @@
 package com.tddsample.android;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -23,5 +24,10 @@ public class MainActivity extends Activity {
 
     public void buttonClick(View view) {
         ((Button) view).setTextColor(getResources().getColor(R.color.red));
+    }
+
+    public void loadNextActivity(View view) {
+        Intent intent = new Intent(MainActivity.this, NextActivity.class);
+        MainActivity.this.startActivity(intent);
     }
 }
