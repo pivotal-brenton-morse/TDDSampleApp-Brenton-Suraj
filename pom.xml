@@ -82,6 +82,24 @@
             <version>2.2.4</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.xtreme.rest</groupId>
+            <artifactId>xl-rest</artifactId>
+            <version>2.0.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.xtreme.threadingLib</groupId>
+            <artifactId>xl-threading</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.xtreme.network</groupId>
+            <artifactId>xtreme-network</artifactId>
+            <version>1.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
