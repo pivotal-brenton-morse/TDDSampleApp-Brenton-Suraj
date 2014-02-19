@@ -3,5 +3,8 @@
     <!-- Main Activity -->
     <string name="app_name">TDDSampleApp</string>
     <string name="action_settings">Settings</string>
+    <string name="what_hint">What</string>
+    <string name="where_hint">Where</string>
+    <string name="search_button_text">Search</string>
 
 </resources>
