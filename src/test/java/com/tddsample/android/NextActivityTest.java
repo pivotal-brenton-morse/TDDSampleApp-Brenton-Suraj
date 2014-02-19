@@ -25,6 +25,6 @@ public class NextActivityTest {
 
     @Test
     public void textView_shouldHaveTextSecondActivity() {
-        assertThat(mTextView).hasText("Second activity!");
+        assertThat(mTextView).hasText(mActivity.getResources().getString(R.string.second_activity));
     }
 }

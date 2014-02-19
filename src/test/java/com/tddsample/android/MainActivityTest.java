@@ -31,7 +31,7 @@ public class MainActivityTest {
 
     @Test
     public void buttonText_shouldBeBlack() {
-        assertThat(mHelloButton).hasText("Hello world!");
+        assertThat(mHelloButton).hasText(mActivity.getResources().getString(R.string.hello_world));
         assertThat(mHelloButton).hasCurrentTextColor(mActivity.getResources().getColor(R.color.black));
     }
 
