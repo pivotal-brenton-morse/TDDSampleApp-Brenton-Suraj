@@ -8,24 +8,14 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.tddsample.android.R;
-import com.tddsample.android.models.Listing;
 import com.tddsample.android.models.ListingInterface;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class YellowPagesAdapter extends ArrayAdapter<Listing> {
+public class YellowPagesAdapter extends ArrayAdapter<ListingInterface> {
 
-    private List<ListingInterface> mListings = new ArrayList<ListingInterface>();
-
-    public YellowPagesAdapter(Context context, int resource, List<Listing> listings) {
+    public YellowPagesAdapter(Context context, int resource, List<ListingInterface> listings) {
         super(context, resource, listings);
-        mListings.addAll(listings);
-    }
-
-    @Override
-    public int getCount() {
-        return mListings.size();
     }
 
     @Override
@@ -35,7 +25,7 @@ public class YellowPagesAdapter extends ArrayAdapter<Listing> {
             view = LayoutInflater.from(getContext()).inflate(R.layout.list_item_restaurant, null);
         }
 
-        ListingInterface listing = mListings.get(position);
+        ListingInterface listing = getItem(position);
         TextView nameTextView = (TextView) view.findViewById(R.id.list_item_restaurant_name);
         nameTextView.setText(listing.getName());
 
@@ -46,8 +36,7 @@ public class YellowPagesAdapter extends ArrayAdapter<Listing> {
     }
 
     public void setData(List<ListingInterface> listings) {
-        mListings.clear();
-        mListings.addAll(listings);
-        notifyDataSetChanged();
+        clear();
+        addAll(listings);
     }
 }

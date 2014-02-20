@@ -4,15 +4,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
 import com.google.inject.Inject;
 import com.tddsample.android.R;
+import com.tddsample.android.activities.NextActivity;
 import com.tddsample.android.adapters.YellowPagesAdapter;
 import com.tddsample.android.listeners.FetchModuleListener;
-import com.tddsample.android.models.Listing;
+import com.tddsample.android.models.GeoCodeInterface;
+import com.tddsample.android.models.ListingInterface;
 import com.tddsample.android.models.ResultInterface;
 import com.tddsample.android.modules.FetchModuleInterface;
 
@@ -47,6 +50,13 @@ public class MainFragment extends RoboFragment {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         mRestaurantListView = (ListView) view.findViewById(R.id.restaurant_list);
+        mRestaurantListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                GeoCodeInterface geoCode = mAdapter.getItem(i).getGeoCode();
+                NextActivity.start(getActivity(), geoCode.getLatitude(), geoCode.getLongitude());
+            }
+        });
 
         searchButton = (Button) view.findViewById(R.id.search_button);
         whatText = (EditText) view.findViewById(R.id.what_text);
@@ -74,7 +84,7 @@ public class MainFragment extends RoboFragment {
                 return true;
             }
         });
-        mAdapter = new YellowPagesAdapter(getActivity(), R.layout.list_item_restaurant, new ArrayList<Listing>());
+        mAdapter = new YellowPagesAdapter(getActivity(), R.layout.list_item_restaurant, new ArrayList<ListingInterface>());
         mRestaurantListView.setAdapter(mAdapter);
     }
 }

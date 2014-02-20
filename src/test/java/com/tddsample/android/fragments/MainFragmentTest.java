@@ -1,6 +1,7 @@
 package com.tddsample.android.fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -13,6 +14,7 @@ import android.widget.ListView;
 
 import com.tddsample.android.R;
 import com.tddsample.android.RobolectricTestRunnerWithInjection;
+import com.tddsample.android.activities.NextActivity;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,6 +22,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 
 import static org.fest.assertions.api.ANDROID.assertThat;
+import static org.fest.assertions.api.Assertions.assertThat;
 import static org.robolectric.Robolectric.shadowOf;
 
 
@@ -71,6 +74,20 @@ public class MainFragmentTest {
         ListView listView = (ListView) mActivity.findViewById(R.id.restaurant_list);
         shadowOf(listView).populateItems();
         assertThat(listView.getAdapter()).hasCount(2);
+    }
+
+    @Test
+    public void clickItem_shouldLaunchMapFragment() {
+        Button searchButton = (Button) mActivity.findViewById(R.id.search_button);
+        searchButton.performClick();
+        ListView listView = (ListView) mActivity.findViewById(R.id.restaurant_list);
+        shadowOf(listView).populateItems();
+        assertThat(mFragment.mAdapter).hasCount(2);
+        shadowOf(listView).performItemClick(0);
+        Intent intent = shadowOf(mActivity).getNextStartedActivity();
+        assertThat(intent.getComponent().getClassName()).isSameAs(NextActivity.class.getName());
+        assertThat(intent.getExtras().containsKey("latitude")).isTrue();
+        assertThat(intent.getExtras().containsKey("longitude")).isTrue();
     }
 
     public static void addFragment(FragmentActivity activity, Fragment fragment) {
