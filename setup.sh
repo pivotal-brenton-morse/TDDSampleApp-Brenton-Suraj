@@ -6,7 +6,7 @@ mvn -q install:install-file -DgroupId=com.xtreme.rest -DartifactId=xl-rest \
 
 echo "Installing Xtreme network library..."
 mvn -q install:install-file -DgroupId=com.xtreme.network -DartifactId=xtreme-network \
-	-Dversion=1.0 -Dpackaging=jar -Dfile="extras/xtreme-network-v1.0.jar"
+	-Dversion=1.5 -Dpackaging=jar -Dfile="extras/xl-network_lib-android-v1.5.jar"
 
 echo "Installing Xtreme threading library..."
 mvn -q install:install-file -DgroupId=com.xtreme.threadingLib -DartifactId=xl-threading \

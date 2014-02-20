@@ -97,7 +97,7 @@
         <dependency>
             <groupId>com.xtreme.network</groupId>
             <artifactId>xtreme-network</artifactId>
-            <version>1.0</version>
+            <version>1.5</version>
         </dependency>
 
     </dependencies>

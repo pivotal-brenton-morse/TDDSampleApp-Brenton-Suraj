@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../xl-rest_lib-android/Xtreme-Rest-Sample/libs/xl-threading_lib-android-v1.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../xl-rest_lib-android/Xtreme-Rest-Sample/libs/xl-network_lib-android-v1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../xl-rest_lib-android/Xtreme-Rest-Sample/libs/android-support-v4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../xl-rest_lib-android/Xtreme-Rest-Sample/libs/gson-2.2.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
