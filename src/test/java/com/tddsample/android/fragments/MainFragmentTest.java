@@ -1,4 +1,4 @@
-package com.tddsample.android;
+package com.tddsample.android.fragments;
 
 import android.app.Activity;
 import android.support.v4.app.Fragment;
@@ -9,19 +9,21 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ListView;
 
-import com.tddsample.android.fragments.MainFragment;
+import com.tddsample.android.R;
+import com.tddsample.android.RobolectricTestRunnerWithInjection;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
-import org.robolectric.RobolectricTestRunner;
 
 import static org.fest.assertions.api.ANDROID.assertThat;
+import static org.robolectric.Robolectric.shadowOf;
 
 
-@RunWith(RobolectricTestRunner.class)
+@RunWith(RobolectricTestRunnerWithInjection.class)
 public class MainFragmentTest {
 
     private FragmentActivity mActivity;
@@ -32,14 +34,16 @@ public class MainFragmentTest {
     @Before
     public void setup() {
         mActivity = Robolectric.buildActivity(FragmentActivity.class).create().start().resume().visible().get();
+
         mFragment = new MainFragment();
         addFragment(mActivity, mFragment);
 
         mWhatText = (EditText) mFragment.getView().findViewById(R.id.what_text);
-        mWhatText.setText("Restaurants");
+        mWhatText.setText("restaurants");
 
         mWhereText = (EditText) mFragment.getView().findViewById(R.id.where_text);
-        mWhereText.setText("Toronto");
+        mWhereText.setText("toronto");
+
     }
 
     @Test
@@ -60,6 +64,15 @@ public class MainFragmentTest {
         assertThat(searchButton).hasText("Search");
     }
 
+    @Test
+    public void clickSearchButton_shouldPopulateList() {
+        Button searchButton = (Button) mActivity.findViewById(R.id.search_button);
+        searchButton.performClick();
+        ListView listView = (ListView) mActivity.findViewById(R.id.restaurant_list);
+        shadowOf(listView).populateItems();
+        assertThat(listView.getAdapter()).hasCount(2);
+    }
+
     public static void addFragment(FragmentActivity activity, Fragment fragment) {
         addFragmentContainerToActivity(activity);
         FragmentManager fragmentManager = activity.getSupportFragmentManager();
@@ -73,4 +86,6 @@ public class MainFragmentTest {
         view.setId(R.id.fragment_container);
         activity.addContentView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
     }
+
+
 }

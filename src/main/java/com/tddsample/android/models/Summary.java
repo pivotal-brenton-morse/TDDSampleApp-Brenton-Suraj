@@ -2,7 +2,7 @@ package com.tddsample.android.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Summary {
+public class Summary implements SummaryInterface {
     @SerializedName("what")
     private String what;
 
@@ -13,15 +13,8 @@ public class Summary {
         return what;
     }
 
-    public void setWhat(String what) {
-        this.what = what;
-    }
-
     public String getWhere() {
         return where;
     }
 
-    public void setWhere(String where) {
-        this.where = where;
-    }
 }

@@ -4,26 +4,21 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Result {
+public class Result implements ResultInterface {
     @SerializedName("summary")
     private Summary summary;
 
     @SerializedName("listings")
     private List<Listing> listings;
 
-    public Summary getSummary() {
+    @Override
+    public SummaryInterface getSummary() {
         return summary;
     }
 
-    public void setSummary(Summary summary) {
-        this.summary = summary;
-    }
-
+    @Override
     public List<Listing> getListings() {
         return listings;
     }
 
-    public void setListings(List<Listing> listings) {
-        this.listings = listings;
-    }
 }
