@@ -1,14 +1,15 @@
 package com.tddsample.android.activities;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 
 import com.tddsample.android.R;
 import com.tddsample.android.fragments.MainFragment;
 
-public class MainActivity extends FragmentActivity {
+import roboguice.activity.RoboFragmentActivity;
+
+public class MainActivity extends RoboFragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
