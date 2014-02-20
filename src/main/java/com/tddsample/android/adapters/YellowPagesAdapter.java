@@ -9,16 +9,14 @@ import android.widget.TextView;
 
 import com.tddsample.android.R;
 import com.tddsample.android.models.Listing;
+import com.tddsample.android.models.ListingInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by dx156-xl on 2/20/14.
- */
 public class YellowPagesAdapter extends ArrayAdapter<Listing> {
 
-    private List<Listing> mListings = new ArrayList<Listing>();
+    private List<ListingInterface> mListings = new ArrayList<ListingInterface>();
 
     public YellowPagesAdapter(Context context, int resource, List<Listing> listings) {
         super(context, resource, listings);
@@ -37,14 +35,17 @@ public class YellowPagesAdapter extends ArrayAdapter<Listing> {
             view = LayoutInflater.from(getContext()).inflate(R.layout.list_item_restaurant, null);
         }
 
-        Listing listing = mListings.get(position);
-        TextView textView = (TextView) view.findViewById(R.id.list_item_restaurant_name);
-        textView.setText(listing.getName());
+        ListingInterface listing = mListings.get(position);
+        TextView nameTextView = (TextView) view.findViewById(R.id.list_item_restaurant_name);
+        nameTextView.setText(listing.getName());
+
+        TextView distTextView = (TextView) view.findViewById(R.id.list_item_restaurant_distance);
+        distTextView.setText(listing.getDistance());
 
         return view;
     }
 
-    public void setData(List<Listing> listings) {
+    public void setData(List<ListingInterface> listings) {
         mListings.clear();
         mListings.addAll(listings);
         notifyDataSetChanged();

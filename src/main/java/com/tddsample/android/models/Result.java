@@ -2,6 +2,7 @@ package com.tddsample.android.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Result implements ResultInterface {
@@ -17,8 +18,8 @@ public class Result implements ResultInterface {
     }
 
     @Override
-    public List<Listing> getListings() {
-        return listings;
+    public List<ListingInterface> getListings() {
+        return new ArrayList<ListingInterface>(listings);
     }
 
 }

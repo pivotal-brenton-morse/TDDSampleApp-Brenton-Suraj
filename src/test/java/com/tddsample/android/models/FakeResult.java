@@ -3,9 +3,6 @@ package com.tddsample.android.models;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by dx156-xl on 2/20/14.
- */
 public class FakeResult implements ResultInterface {
 
 
@@ -23,18 +20,11 @@ public class FakeResult implements ResultInterface {
     }
 
     @Override
-    public List<Listing> getListings() {
-        Listing listing1 = new Listing();
-        listing1.setId("1");
-        listing1.setName("test 1");
-        listing1.setDistance("dist 1");
+    public List<ListingInterface> getListings() {
+        ListingInterface listing1 = new FakeListing("1", "name 1", "dist 1", "49.2528517", "-123.1009162");
+        ListingInterface listing2 = new FakeListing("2", "name 2", "dist 2", "49.260419", "-123.116297");
 
-        Listing listing2 = new Listing();
-        listing2.setId("2");
-        listing2.setName("test 2");
-        listing2.setDistance("dist 2");
-
-        List<Listing> listings = new ArrayList<Listing>();
+        List<ListingInterface> listings = new ArrayList<ListingInterface>();
         listings.add(listing1);
         listings.add(listing2);
 

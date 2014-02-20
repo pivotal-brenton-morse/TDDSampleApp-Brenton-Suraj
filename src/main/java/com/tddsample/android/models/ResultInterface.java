@@ -5,5 +5,5 @@ import java.util.List;
 public interface ResultInterface {
 
     public SummaryInterface getSummary();
-    public List<Listing> getListings();
+    public List<ListingInterface> getListings();
 }
