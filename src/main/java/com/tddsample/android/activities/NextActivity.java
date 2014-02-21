@@ -7,10 +7,10 @@ import android.os.Bundle;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.inject.Inject;
 import com.tddsample.android.R;
 import com.tddsample.android.utils.CameraUpdateFactoryWrapperInterface;
+import com.tddsample.android.utils.MarkerOptionsWrapperInterface;
 
 import roboguice.activity.RoboFragmentActivity;
 
@@ -30,6 +30,9 @@ public class NextActivity extends RoboFragmentActivity {
 
     @Inject
     public CameraUpdateFactoryWrapperInterface cameraUpdateFactoryWrapper;
+
+    @Inject
+    public MarkerOptionsWrapperInterface markerOptionsWrapper;
 
     public static void start(Activity activity, final String name, final String latitude, final String longitude) {
         Intent intent = new Intent(activity, NextActivity.class);
@@ -71,9 +74,7 @@ public class NextActivity extends RoboFragmentActivity {
         map.getUiSettings().setZoomControlsEnabled(false);
         map.getUiSettings().setMyLocationButtonEnabled(false);
         map.animateCamera(cameraUpdateFactoryWrapper.newLatLngZoom(position, MAP_ZOOM.ZOOM_LEVEL_15));
-        map.addMarker(new MarkerOptions()
-                .position(position)
-                .title(name));
+        map.addMarker(markerOptionsWrapper.getOptions(name, position));
     }
 
 }

@@ -10,6 +10,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.tddsample.android.RobolectricTestRunnerWithInjection;
 import com.tddsample.android.activities.NextActivity;
 import com.tddsample.android.utils.FakeCameraUpdateFactoryWrapper;
+import com.tddsample.android.utils.FakeMarkerOptionsWrapper;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -56,7 +57,11 @@ public class NextActivityTest {
 
     @Test
     public void setupMap_shouldAddMarker() {
-        assertThat(((FakeCameraUpdateFactoryWrapper) activity.cameraUpdateFactoryWrapper).latLng).isEqualTo(new LatLng(Double.parseDouble(HAMBURG_LAT), Double.parseDouble(HAMBURG_LONG)));
+        LatLng expected = new LatLng(Double.parseDouble(HAMBURG_LAT), Double.parseDouble(HAMBURG_LONG));
+        FakeMarkerOptionsWrapper expectedMarkerOptionsWrapper = (FakeMarkerOptionsWrapper) activity.markerOptionsWrapper;
+        assertThat(((FakeCameraUpdateFactoryWrapper) activity.cameraUpdateFactoryWrapper).latLng).isEqualTo(expected);
+        assertThat(expectedMarkerOptionsWrapper.latLng).isEqualTo(expected);
+        assertThat(expectedMarkerOptionsWrapper.name).isEqualTo(HAMBURG);
         verify(mockUiSettings).setZoomControlsEnabled(false);
     }
 

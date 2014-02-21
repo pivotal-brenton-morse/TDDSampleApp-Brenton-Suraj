@@ -37,6 +37,7 @@ public class RobolectricTestRunnerWithInjection extends RobolectricTestRunner {
         @Override
         public void prepareTest(Object test) {
             getInjector(Robolectric.application).injectMembers(test);
+
         }
     }
 }
