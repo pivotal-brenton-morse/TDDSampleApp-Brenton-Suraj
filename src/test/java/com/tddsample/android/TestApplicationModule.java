@@ -8,8 +8,10 @@ import com.tddsample.android.utils.CameraUpdateFactoryWrapperInterface;
 import com.tddsample.android.utils.FakeAsyncTaskWrapper;
 import com.tddsample.android.utils.FakeCameraUpdateFactoryWrapper;
 import com.tddsample.android.utils.FakeMarkerOptionsWrapper;
+import com.tddsample.android.utils.FakeNetworkRequestForResultWrapper;
 import com.tddsample.android.utils.FakeYellowPagesUrlWrapper;
 import com.tddsample.android.utils.MarkerOptionsWrapperInterface;
+import com.tddsample.android.utils.NetworkRequestForResultWrapperInterface;
 import com.tddsample.android.utils.YellowPagesUrlWrapperInterface;
 
 public class TestApplicationModule extends AbstractModule {
@@ -20,5 +22,6 @@ public class TestApplicationModule extends AbstractModule {
         bind(MarkerOptionsWrapperInterface.class).to(FakeMarkerOptionsWrapper.class);
         bind(YellowPagesUrlWrapperInterface.class).to(FakeYellowPagesUrlWrapper.class);
         bind(AsyncTaskWrapperInterface.class).to(FakeAsyncTaskWrapper.class);
+        bind(NetworkRequestForResultWrapperInterface.class).to(FakeNetworkRequestForResultWrapper.class);
     }
 }

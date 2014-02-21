@@ -9,6 +9,8 @@ import com.tddsample.android.utils.CameraUpdateFactoryWrapper;
 import com.tddsample.android.utils.CameraUpdateFactoryWrapperInterface;
 import com.tddsample.android.utils.MarkerOptionsWrapper;
 import com.tddsample.android.utils.MarkerOptionsWrapperInterface;
+import com.tddsample.android.utils.NetworkRequestForResultWrapper;
+import com.tddsample.android.utils.NetworkRequestForResultWrapperInterface;
 import com.tddsample.android.utils.YellowPagesUrlWrapper;
 import com.tddsample.android.utils.YellowPagesUrlWrapperInterface;
 
@@ -20,5 +22,6 @@ public class ApplicationModule extends AbstractModule {
         bind(MarkerOptionsWrapperInterface.class).to(MarkerOptionsWrapper.class);
         bind(YellowPagesUrlWrapperInterface.class).to(YellowPagesUrlWrapper.class);
         bind(AsyncTaskWrapperInterface.class).to(AsyncTaskWrapper.class);
+        bind(NetworkRequestForResultWrapperInterface.class).to(NetworkRequestForResultWrapper.class);
     }
 }
