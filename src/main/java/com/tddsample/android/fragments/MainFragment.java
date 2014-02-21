@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.inject.Inject;
 import com.tddsample.android.R;
@@ -50,14 +51,6 @@ public class MainFragment extends RoboFragment {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         mRestaurantListView = (ListView) view.findViewById(R.id.restaurant_list);
-        mRestaurantListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                GeoCodeInterface geoCode = mAdapter.getItem(i).getGeoCode();
-                NextActivity.start(getActivity(), geoCode.getLatitude(), geoCode.getLongitude());
-            }
-        });
-
         searchButton = (Button) view.findViewById(R.id.search_button);
         whatText = (EditText) view.findViewById(R.id.what_text);
         whereText = (EditText) view.findViewById(R.id.where_text);
@@ -82,6 +75,18 @@ public class MainFragment extends RoboFragment {
                 whatText.setText("restaurants");
                 whereText.setText("toronto");
                 return true;
+            }
+        });
+        mRestaurantListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                ListingInterface item = mAdapter.getItem(i);
+                GeoCodeInterface geoCode = item.getGeoCode();
+                if (geoCode != null) {
+                    NextActivity.start(getActivity(), item.getName(), geoCode.getLatitude(), geoCode.getLongitude());
+                } else {
+                    Toast.makeText(getActivity(), "No location data", 5);
+                }
             }
         });
         mAdapter = new YellowPagesAdapter(getActivity(), R.layout.list_item_restaurant, new ArrayList<ListingInterface>());

@@ -86,6 +86,7 @@ public class MainFragmentTest {
         shadowOf(listView).performItemClick(0);
         Intent intent = shadowOf(mActivity).getNextStartedActivity();
         assertThat(intent.getComponent().getClassName()).isSameAs(NextActivity.class.getName());
+        assertThat(intent.getExtras().containsKey("name")).isTrue();
         assertThat(intent.getExtras().containsKey("latitude")).isTrue();
         assertThat(intent.getExtras().containsKey("longitude")).isTrue();
     }
